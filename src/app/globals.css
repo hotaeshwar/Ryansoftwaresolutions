@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rgss-primary: #4BAED6;
+  --color-rgss-light: #8FD3F4;
+  --color-rgss-pale: #7CC7E8;
+  --color-rgss-dark: #1A5B7A;
+  --color-rgss-deep: #0F4C68;
+  --color-rgss-glow: rgba(124, 199, 232, 0.15);
+  --font-sans: var(--font-outfit);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1A5B7A;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Custom continuous animation utilities */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(30px, 20px) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 20s linear infinite;
+}
+
+/* Custom scroll bar style */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #c3e5f4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8FD3F4;
+}
+
+/* Global bold and easily readable overrides for paragraphs */
+p {
+  font-weight: 600 !important;
+}
+
+/* Specific text color adjustments to improve readability contrast for dark text */
+p[class*="text-rgss-dark"] {
+  color: var(--color-rgss-dark) !important;
+}
+
+/* Ensure footer text remains readable on dark backgrounds */
+footer p, footer span, footer a {
+  color: var(--color-rgss-light) !important;
+}
+footer a:hover {
+  color: #ffffff !important;
+}
