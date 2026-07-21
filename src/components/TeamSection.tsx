@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { 
-  Users2, Award, Globe2, ShieldAlert, GraduationCap, CheckCircle
+  Award, CheckCircle
 } from "lucide-react";
 
 interface Qualification {
@@ -45,9 +45,9 @@ interface TeamMember {
 
 const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: "Sandeep Verma",
+    name: "Sandeep",
     role: "SAP Delivery & Project Management Leader",
-    initials: "SV",
+    initials: "S",
     details: [
       "26 Years of Experience in SAP",
       "Multiple implementations in India & Abroad",
@@ -126,7 +126,7 @@ export default function TeamSection() {
                 Collective Strength & Qualifications
               </h3>
               <p className="text-sm text-rgss-dark/95 leading-relaxed font-normal">
-                We are a team of highly experienced people in IT industry, having experience upto 12-20 years in their respective working domains.
+                We are a team of highly experienced people in IT industry, having vast experience in various industries in India & Abroad.
               </p>
               <p className="text-sm text-rgss-dark/95 leading-relaxed font-normal">
                 The key team members have done numerous implementations, International and domestics roll outs, upgrades and support projects.
