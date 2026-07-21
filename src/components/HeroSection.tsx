@@ -192,19 +192,17 @@ export default function HeroSection() {
               {/* Glow behind the video */}
               <div className="absolute w-[85%] h-[85%] rounded-full bg-gradient-to-tr from-rgss-primary/20 via-rgss-light/10 to-transparent blur-3xl -z-10 animate-pulse-glow animate-float" />
               
-              {isClient && (
-                <video
-                  ref={videoRef}
-                  src="/ryanlogo.mp4"
-                  loop
-                  playsInline
-                  muted
-                  autoPlay
-                  controls={false}
-                  suppressHydrationWarning
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[116%] h-[116%] max-w-none object-cover z-10 transition-all duration-700 hover:scale-[1.05]"
-                />
-              )}
+              <video
+                ref={videoRef}
+                src="/ryanlogo.mp4"
+                loop
+                playsInline
+                muted
+                autoPlay
+                controls={false}
+                suppressHydrationWarning
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[116%] h-[116%] max-w-none object-cover z-10 transition-all duration-700 hover:scale-[1.05]"
+              />
             </motion.div>
           </motion.div>
 

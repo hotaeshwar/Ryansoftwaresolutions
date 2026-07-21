@@ -20,17 +20,7 @@ export default function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden bg-white">
-      {/* Light Grid Overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]" 
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #4BAED6 1px, transparent 1px),
-            linear-gradient(to bottom, #4BAED6 1px, transparent 1px)
-          `,
-          backgroundSize: "60px 60px",
-        }}
-      />
+
 
       {/* Floating Ambient Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none">

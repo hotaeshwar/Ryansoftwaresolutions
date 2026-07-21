@@ -47,18 +47,16 @@ export default function SplashScreen({ finishLoading }: SplashScreenProps) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#091D28] overflow-hidden" suppressHydrationWarning>
       {/* Background Video */}
-      {isClient && (
-        <video
-          ref={videoRef}
-          src="/ryanlogo.mp4"
-          loop
-          playsInline
-          muted
-          autoPlay
-          suppressHydrationWarning
-          className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none -z-20"
-        />
-      )}
+      <video
+        ref={videoRef}
+        src="/ryanlogo.mp4"
+        loop
+        playsInline
+        muted
+        autoPlay
+        suppressHydrationWarning
+        className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none -z-20"
+      />
 
       {/* Background Grid and Glowing shapes */}
       <div 
