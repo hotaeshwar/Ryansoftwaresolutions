@@ -17,10 +17,10 @@ export default function EnterpriseApplications() {
       subtitle: "End-to-end implementation and platform migrations",
       icon: GitMerge,
       items: [
-        { name: "Implementation (Greenfield & Brownfield)", desc: "End-to-end implementation of key platforms: SAP ECC, SAP S/4 HANA, Microsoft Dynamics, and Oracle." },
+        { name: "Implementation (Greenfield & Brownfield)", desc: "End-to-end implementation of key platforms: SAP ECC and SAP S/4 HANA." },
         { name: "Migration from ECC to HANA", desc: "Safe, proven migration paths to transition your core ERP database layers to S/4 HANA." },
         { name: "Business Intelligence Reporting", desc: "Dynamic reporting solutions to provide firm-wide visibility and support strategic decision making." },
-        { name: "Document Management Solutions", desc: "Optimizing workflow cycles by centralizing and securing your corporate digital assets." },
+        { name: "Customized Vendor & Customer Portals", desc: "Tailored portal interfaces to streamline partner communication and customer self-service capabilities." },
         { name: "Roll Outs & Upgrades", desc: "Strategic deployment of global upgrades and template rollouts across business locations." },
       ]
     },
@@ -148,13 +148,13 @@ export default function EnterpriseApplications() {
                     <Icon size={20} className="text-rgss-primary animate-pulse" />
                   </div>
                   <div>
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-rgss-primary block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-rgss-primary block">
                       Layer 0{idx + 1}
                     </span>
-                    <h3 className="text-sm font-extrabold text-rgss-deep uppercase tracking-tight leading-tight">
+                    <h3 className="text-base font-extrabold text-rgss-deep uppercase tracking-tight leading-tight">
                       {layer.title}
                     </h3>
-                    <p className="text-[10px] text-rgss-dark font-medium leading-tight mt-1">
+                    <p className="text-xs text-rgss-dark font-medium leading-tight mt-1">
                       {layer.subtitle}
                     </p>
                   </div>
@@ -174,10 +174,10 @@ export default function EnterpriseApplications() {
                       {/* Left glowing bar on hover */}
                       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-rgss-primary scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom" />
 
-                      <h4 className="text-xs font-extrabold text-rgss-deep group-hover:text-rgss-primary transition-colors flex items-center gap-1">
+                      <h4 className="text-sm font-extrabold text-rgss-deep group-hover:text-rgss-primary transition-colors flex items-center gap-1">
                         {item.name}
                       </h4>
-                      <p className="text-[11px] text-rgss-dark leading-relaxed mt-1.5 font-semibold">
+                      <p className="text-[13px] text-rgss-dark leading-relaxed mt-1.5 font-semibold">
                         {item.desc}
                       </p>
                     </motion.div>

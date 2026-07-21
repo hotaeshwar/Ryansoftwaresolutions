@@ -1,16 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
-import { Cpu, Layers } from "lucide-react";
+import { Layers, Cpu, Compass, Users } from "lucide-react";
 
 export default function AboutSection() {
   const [isClient, setIsClient] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (isClient && videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.log("Autoplay failed:", err);
+      });
+    }
+  }, [isClient]);
 
   const narrative = [
     {
@@ -24,8 +35,14 @@ export default function AboutSection() {
       icon: Layers,
     },
     {
+      title: "Our Vision",
+      text: "Our vision is to empower enterprises by extending the core capabilities of ERP systems with intelligent, AI-driven ecosystems by integrating cutting-edge, value-added services that drive automation, actionable insights, and scalable growth, proactively solving business challenges & maximizing the ROI of ERP investments by delivering seamless solutions that enhance user experience, streamline operations, and adapt to evolving business needs.",
+      icon: Compass,
+    },
+    {
       title: "Dynamic Expertise",
-      text: "We represent a team of young but experienced, talented and dynamic individuals who come from different industry background with rich accumulated experience of business processes, functions, technology, systems and resources.",
+      text: "We represent a team of experienced, talented and dynamic individuals who come from different industry backgrounds with rich accumulated experience of business processes, functions, technology, systems and resources.",
+      icon: Users,
     },
   ];
 
@@ -80,7 +97,7 @@ export default function AboutSection() {
               transition={{ delay: 0.5 }}
               className="text-sm text-rgss-primary/80 font-medium italic border-l-2 border-rgss-primary pl-4 py-1"
             >
-              "We, at AGSS, value our clients and offer the best possible solutions and appropriate advice for their ERP and digital transformations."
+              "We, at RGSS, value our clients and offer the best possible solutions and appropriate advice for their ERP and digital transformations."
             </motion.p>
           </div>
 
@@ -98,6 +115,7 @@ export default function AboutSection() {
               
               {isClient && (
                 <video
+                  ref={videoRef}
                   src="/corporate.mp4"
                   autoPlay
                   muted

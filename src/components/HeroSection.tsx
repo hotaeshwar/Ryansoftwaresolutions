@@ -51,10 +51,21 @@ function TypewriterHeading() {
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (isClient && videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.log("Autoplay failed:", err);
+      });
+    }
+  }, [isClient]);
   
   // Parallax scroll effects
   const { scrollYProgress } = useScroll({
@@ -80,7 +91,7 @@ export default function HeroSection() {
           {/* Text Content */}
           <motion.div
             style={{ y: textY, opacity }}
-            className="lg:col-span-7 text-left space-y-6"
+            className="lg:col-span-6 text-left space-y-6"
           >
             <div className="space-y-2">
               {/* Badge */}
@@ -170,27 +181,28 @@ export default function HeroSection() {
           {/* Interactive Logo Video */}
           <motion.div
             style={{ y: logoY, opacity }}
-            className="lg:col-span-5 flex justify-center items-center relative"
+            className="lg:col-span-6 flex justify-center items-center relative"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative w-full max-w-xl aspect-square flex items-center justify-center"
+              className="relative w-full max-w-2xl aspect-video flex items-center justify-center overflow-hidden rounded-3xl shadow-2xl shadow-rgss-primary/10 border-none isolate z-10"
             >
               {/* Glow behind the video */}
               <div className="absolute w-[85%] h-[85%] rounded-full bg-gradient-to-tr from-rgss-primary/20 via-rgss-light/10 to-transparent blur-3xl -z-10 animate-pulse-glow animate-float" />
               
               {isClient && (
                 <video
+                  ref={videoRef}
                   src="/ryanlogo.mp4"
-                  autoPlay
-                  muted
                   loop
                   playsInline
+                  muted
+                  autoPlay
                   controls={false}
                   suppressHydrationWarning
-                  className="w-full h-full object-contain relative z-10"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[116%] h-[116%] max-w-none object-cover z-10 transition-all duration-700 hover:scale-[1.05]"
                 />
               )}
             </motion.div>

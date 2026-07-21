@@ -61,10 +61,10 @@ export default function ContactSection() {
                     <Phone size={16} />
                   </div>
                   <a
-                    href="tel:9810827720"
+                    href="tel:9818695636"
                     className="hover:text-rgss-primary hover:underline font-semibold text-rgss-deep transition-all"
                   >
-                    +91 9810827720
+                    +91 9818695636
                   </a>
                 </div>
 

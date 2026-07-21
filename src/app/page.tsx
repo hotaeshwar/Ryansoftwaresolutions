@@ -27,76 +27,78 @@ export default function Home() {
 
   return (
     <>
-      <AnimatePresence mode="wait">
-        {isLoading ? (
+      <AnimatePresence>
+        {isLoading && (
           <SplashScreen key="loader" finishLoading={() => setIsLoading(false)} />
-        ) : (
-          <motion.div
-            key="content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col min-h-screen"
-          >
-            {/* Ambient background particle system */}
-            <AnimatedBackground />
-
-            {/* Floating WhatsApp chatbot at left */}
-            <WhatsAppChat />
-
-            {/* Floating Header Navigation */}
-            <Navbar />
-
-            {/* Main long-scroll body */}
-            <main className="flex-1 w-full relative">
-              {/* 1. Hero / Identity Introduction */}
-              <HeroSection />
-
-              {/* 2. About Us Narrative & Digital Flow */}
-              <AboutSection />
-
-              {/* 3. Corporate Principles & Philosophy */}
-              <PhilosophySection />
-
-              {/* 4. Service Offerings Radial Grid */}
-              <ServicesEcosystem />
-
-              {/* 5. Enterprise Applications & Technology stack */}
-              <EnterpriseApplications />
-
-              {/* 6. Transformation Timeline Journey */}
-              <TransformationJourney />
-
-              {/* 7. End-to-End Business Life-Cycle */}
-              <BusinessLifecycle />
-
-              {/* 8. Success Factors & advantage matrix */}
-              <SuccessFactors />
-
-              {/* 9. Customer benefits grids */}
-              <CustomerBenefits />
-
-              {/* 10. Qualification and Team Expertise metrics */}
-              <TeamSection />
-
-              {/* 11. Alliance Vision */}
-              <AssociationVision />
-
-              {/* 12. Footprint verticals & Engagements notice */}
-              <Association />
-
-              {/* 12b. Clients & Partners Section */}
-              <ClientSection />
-
-              {/* 13. Contact Noida HQ & Transmit form */}
-              <ContactSection />
-            </main>
-
-            {/* Trademark footer */}
-            <Footer />
-          </motion.div>
         )}
       </AnimatePresence>
+
+      <motion.div
+        key="content"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
+        className={`flex flex-col min-h-screen ${
+          isLoading ? "pointer-events-none select-none h-screen overflow-hidden" : ""
+        }`}
+      >
+        {/* Ambient background particle system */}
+        <AnimatedBackground />
+
+        {/* Floating WhatsApp chatbot at left */}
+        <WhatsAppChat />
+
+        {/* Floating Header Navigation */}
+        <Navbar />
+
+        {/* Main long-scroll body */}
+        <main className="flex-1 w-full relative">
+          {/* 1. Hero / Identity Introduction */}
+          <HeroSection />
+
+          {/* 2. About Us Narrative & Digital Flow */}
+          <AboutSection />
+
+          {/* 3. Corporate Principles & Philosophy */}
+          <PhilosophySection />
+
+          {/* 4. Service Offerings Radial Grid */}
+          <ServicesEcosystem />
+
+          {/* 5. Enterprise Applications & Technology stack */}
+          <EnterpriseApplications />
+
+          {/* 6. Transformation Timeline Journey */}
+          <TransformationJourney />
+
+          {/* 7. End-to-End Business Life-Cycle */}
+          <BusinessLifecycle />
+
+          {/* 8. Success Factors & advantage matrix */}
+          <SuccessFactors />
+
+          {/* 9. Customer benefits grids */}
+          <CustomerBenefits />
+
+          {/* 10. Qualification and Team Expertise metrics */}
+          <TeamSection />
+
+          {/* 11. Alliance Vision */}
+          <AssociationVision />
+
+          {/* 12. Footprint verticals & Engagements notice */}
+          <Association />
+
+          {/* 12b. Clients & Partners Section */}
+          <ClientSection />
+
+          {/* 13. Contact Noida HQ & Transmit form */}
+          <ContactSection />
+        </main>
+
+        {/* Trademark footer */}
+        <Footer />
+      </motion.div>
     </>
   );
 }

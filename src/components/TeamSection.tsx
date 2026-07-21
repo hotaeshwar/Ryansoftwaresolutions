@@ -35,6 +35,54 @@ const QUALIFICATIONS: Qualification[] = [
   }
 ];
 
+interface TeamMember {
+  name: string;
+  role: string;
+  initials: string;
+  details: string[];
+  color: string;
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  {
+    name: "Sandeep Verma",
+    role: "SAP Delivery & Project Management Leader",
+    initials: "SV",
+    details: [
+      "26 Years of Experience in SAP",
+      "Multiple implementations in India & Abroad",
+      "Worked at Accenture, TCS, Steria, HCL etc.",
+      "B.Tech, PMP Certified"
+    ],
+    color: "from-blue-600 to-cyan-500"
+  },
+  {
+    name: "Sanjeev Budki",
+    role: "Enterprise Program & SAP Integration Leader",
+    initials: "SB",
+    details: [
+      "Over 24 years of experience, worked with TCS",
+      "Managed large-scale SAP programs & projects",
+      "B.Tech, ME, ITIL 4, PRINCE2, TOGAF",
+      "Google Cloud Digital Leader & Generative AI Certified",
+      "SAP S/4 HANA Business Process Integration Specialist"
+    ],
+    color: "from-rgss-primary to-rgss-light"
+  },
+  {
+    name: "Vikram Garg",
+    role: "SAP Finance & Process Advisory Leader",
+    initials: "VG",
+    details: [
+      "Over 20 years of experience in SAP",
+      "Worked with TCS and Accenture",
+      "Multiple implementations in India & Abroad",
+      "Chartered Accountant"
+    ],
+    color: "from-indigo-600 to-purple-500"
+  }
+];
+
 export default function TeamSection() {
   const [activeQualIdx, setActiveQualIdx] = useState<number>(0);
 
@@ -84,7 +132,7 @@ export default function TeamSection() {
                 The key team members have done numerous implementations, International and domestics roll outs, upgrades and support projects.
               </p>
               <p className="text-sm text-rgss-dark/95 leading-relaxed font-normal">
-                We completely understand the client expectations and not only put our best to meet them but put our experience to mitigate the issues which may come later. The qualifications of Team AGSS are below:
+                We completely understand the client expectations and not only put our best to meet them but put our experience to mitigate the issues which may come later. The qualifications of Team RGSS are below:
               </p>
             </div>
 
@@ -144,6 +192,58 @@ export default function TeamSection() {
 
           </div>
 
+        </div>
+
+        {/* Individual Team Members Cards Grid */}
+        <div className="mt-20 space-y-8">
+          <div className="text-center max-w-2xl mx-auto">
+            <h3 className="text-xl md:text-2xl font-black text-rgss-deep uppercase tracking-tight">
+              Our Leadership & Advisory Experts
+            </h3>
+            <p className="text-xs sm:text-sm text-rgss-dark/85 mt-2">
+              Meet our core technology leaders guiding enterprise roadmap transformations with verified global backgrounds.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {TEAM_MEMBERS.map((member, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="bg-white border border-rgss-light/25 p-6 rounded-3xl shadow-lg hover:shadow-xl hover:border-rgss-primary/45 hover:scale-[1.02] transition-all flex flex-col justify-between"
+              >
+                <div className="space-y-5">
+                  {/* Stylized Avatar Header */}
+                  <div className="flex items-center gap-4 border-b border-rgss-light/15 pb-4">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${member.color} text-white flex items-center justify-center font-black text-lg shadow-md shrink-0`}>
+                      {member.initials}
+                    </div>
+                    <div>
+                      <h4 className="text-base font-extrabold text-rgss-deep leading-tight">
+                        {member.name}
+                      </h4>
+                      <span className="text-[10px] font-bold text-rgss-primary uppercase tracking-wider block mt-0.5">
+                        {member.role}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Details Bullets */}
+                  <ul className="space-y-2.5">
+                    {member.details.map((detail, dIdx) => (
+                      <li key={dIdx} className="flex gap-2 text-xs text-rgss-dark/95 leading-normal">
+                        <CheckCircle size={14} className="text-rgss-primary shrink-0 mt-0.5" />
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
       </div>

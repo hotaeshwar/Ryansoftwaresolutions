@@ -49,7 +49,7 @@ export default function WhatsAppChat() {
 
       {/* Floating Button */}
       <motion.a
-        href="https://wa.me/919810827720?text=Hi%20RGSS,%20I'm%20interested%20in%20your%20IT%20Consulting%20Services."
+        href="https://wa.me/919818695636?text=Hi%20RGSS,%20I'm%20interested%20in%20your%20IT%20Consulting%20Services."
         target="_blank"
         rel="noopener noreferrer"
         onMouseEnter={() => setShowTooltip(true)}

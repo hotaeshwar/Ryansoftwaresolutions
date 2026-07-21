@@ -67,7 +67,7 @@ const SERVICES: Service[] = [
     shortDesc: "Cohesive alignment of platforms, data streams, and business logic.",
     longDesc: "We connect systems, data, and processes across enterprises. We design Greenfield and Brownfield integration architectures to prevent data fragmentation and keep information flowing.",
     bullets: [
-      "Multi-platform integration (SAP, Oracle, MS Dynamics)",
+      "System integration (SAP)",
       "Process Integration and Orchestration",
       "Unified operational databases",
       "Seamless interface and API management"

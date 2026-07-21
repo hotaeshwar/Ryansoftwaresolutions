@@ -27,13 +27,13 @@ export default function Footer() {
           
           {/* Column 1: Brand & Logo */}
           <div className="lg:col-span-4 space-y-5 flex flex-col items-center md:items-start text-center md:text-left">
-            <a href="#" className="inline-block relative w-48 h-15 bg-white/95 px-5 py-2.5 rounded-2xl shadow-lg flex items-center justify-center border border-rgss-light/25 hover:border-rgss-primary/45 transition-colors">
+            <a href="#" className="inline-block relative w-full max-w-[440px] h-36">
               <Image
                 src="/logo.png"
                 alt="RGSS Logo"
                 fill
-                sizes="192px"
-                className="object-contain p-1.5"
+                sizes="440px"
+                className="object-contain object-left scale-[1.5] origin-left"
               />
             </a>
             <p className="text-xs text-rgss-light/80 leading-relaxed font-normal max-w-xs">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { 
@@ -36,7 +36,7 @@ const SUCCESS_FACTORS: SuccessFactor[] = [
       "Professionals from Different Industry Verticals",
       "Domain Experts",
       "Average experience of associates – more than 12 years",
-      "Team include CAs, MBAs, MCA."
+      "Team include CAs, MBAs, MCA, Btech who are Ex- TCS, Accenture Alumnis"
     ]
   },
   {
@@ -47,7 +47,7 @@ const SUCCESS_FACTORS: SuccessFactor[] = [
     bullets: [
       "Trusted Process Driven Approach for Service Support & Delivery",
       "Business processes oriented delivery approach",
-      "SAP Activate Methodology"
+      "SAP Supported Methodologies"
     ]
   },
   {
@@ -66,6 +66,22 @@ const SUCCESS_FACTORS: SuccessFactor[] = [
 
 export default function SuccessFactors() {
   const [openSectionId, setOpenSectionId] = useState<string>("diff");
+  const [isClient, setIsClient] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.log("Autoplay failed:", err);
+      });
+    }
+  }, [isClient]);
 
   const toggleSection = (id: string) => {
     setOpenSectionId(openSectionId === id ? "" : id);
@@ -91,14 +107,17 @@ export default function SuccessFactors() {
               transition={{ duration: 0.8 }}
               className="w-full max-w-md aspect-video overflow-hidden rounded-3xl"
             >
-              <video
-                src="/make.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-              />
+              {isClient && (
+                <video
+                  ref={videoRef}
+                  src="/make.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              )}
             </motion.div>
           </div>
 

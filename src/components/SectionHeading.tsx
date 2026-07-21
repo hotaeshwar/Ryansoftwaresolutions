@@ -18,32 +18,45 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   const isLeft = align === "left";
 
-  const [typedText, setTypedText] = useState("");
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
 
   useEffect(() => {
-    if (subIndex === title.length + 1 && !reverse) {
-      // Pause at the end of typing
-      const timeout = setTimeout(() => setReverse(true), 2500);
-      return () => clearTimeout(timeout);
-    }
-
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, reverse ? 50 : 100); // Backspace faster than typing
-
-    return () => clearTimeout(timeout);
-  }, [subIndex, reverse, title]);
+    setSubIndex(0);
+    setReverse(false);
+  }, [title]);
 
   useEffect(() => {
-    setTypedText(title.substring(0, subIndex));
-  }, [subIndex, title]);
+    if (!title) return;
+
+    if (reverse) {
+      if (subIndex === 0) {
+        const timeout = setTimeout(() => {
+          setReverse(false);
+        }, 1000);
+        return () => clearTimeout(timeout);
+      }
+
+      const timeout = setTimeout(() => {
+        setSubIndex((prev) => Math.max(0, prev - 1));
+      }, 50);
+      return () => clearTimeout(timeout);
+    } else {
+      if (subIndex >= title.length) {
+        const timeout = setTimeout(() => {
+          setReverse(true);
+        }, 2500);
+        return () => clearTimeout(timeout);
+      }
+
+      const timeout = setTimeout(() => {
+        setSubIndex((prev) => Math.min(title.length, prev + 1));
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [subIndex, reverse, title]);
+
+  const typedText = title.substring(0, subIndex);
 
   return (
     <div className={`mb-12 md:mb-16 flex flex-col ${isLeft ? "items-start text-left" : "items-center text-center"}`}>

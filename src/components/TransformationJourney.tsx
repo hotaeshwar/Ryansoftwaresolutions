@@ -227,15 +227,15 @@ export default function TransformationJourney() {
                     transition={{ duration: 0.4 }}
                     className="mt-8 space-y-2 px-1 relative flex flex-col items-center"
                   >
-                    <span className="text-[9px] font-bold text-rgss-primary uppercase tracking-widest block">
+                    <span className="text-[11px] font-bold text-rgss-primary uppercase tracking-widest block">
                       {s.badge}
                     </span>
-                    <h3 className={`text-xs font-black uppercase tracking-tight transition-colors duration-300 ${
+                    <h3 className={`text-sm font-black uppercase tracking-tight transition-colors duration-300 ${
                       isActive ? "text-rgss-primary" : "text-rgss-deep"
                     }`}>
                       {s.title}
                     </h3>
-                    <p className="text-[10px] text-rgss-dark/85 leading-normal font-normal">
+                    <p className="text-[13px] text-rgss-dark/85 leading-normal font-normal">
                       {s.desc}
                     </p>
                   </motion.div>
@@ -288,15 +288,15 @@ export default function TransformationJourney() {
                     ? "bg-white border-rgss-primary shadow-md shadow-rgss-light/10 scale-[1.02]" 
                     : "bg-white border-rgss-light/25 shadow-sm"
                 }`}>
-                  <span className="text-[9px] font-bold text-rgss-primary uppercase tracking-widest block">
+                  <span className="text-[11px] font-bold text-rgss-primary uppercase tracking-widest block">
                     {s.badge}
                   </span>
-                  <h3 className={`text-sm font-bold uppercase tracking-tight ${
+                  <h3 className={`text-base font-bold uppercase tracking-tight ${
                     isActive ? "text-rgss-primary" : "text-rgss-deep"
                   }`}>
                     {s.title}
                   </h3>
-                  <p className="text-xs text-rgss-dark/95 leading-relaxed mt-1 font-normal">
+                  <p className="text-sm text-rgss-dark/95 leading-relaxed mt-1 font-normal">
                     {s.desc}
                   </p>
                 </div>

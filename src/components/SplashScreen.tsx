@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -11,10 +11,21 @@ interface SplashScreenProps {
 export default function SplashScreen({ finishLoading }: SplashScreenProps) {
   const [progress, setProgress] = useState(0);
   const [isClient, setIsClient] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (isClient && videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.log("Autoplay failed:", err);
+      });
+    }
+  }, [isClient]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,11 +49,12 @@ export default function SplashScreen({ finishLoading }: SplashScreenProps) {
       {/* Background Video */}
       {isClient && (
         <video
+          ref={videoRef}
           src="/ryanlogo.mp4"
-          autoPlay
-          muted
           loop
           playsInline
+          muted
+          autoPlay
           suppressHydrationWarning
           className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none -z-20"
         />
@@ -61,22 +73,19 @@ export default function SplashScreen({ finishLoading }: SplashScreenProps) {
 
       <div className="flex flex-col items-center gap-8 max-w-sm w-full px-6 relative z-10">
         
-        {/* White Background Logo Container Card */}
+        {/* Transparent Logo Container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: -20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-80 h-32 bg-white px-6 py-4 rounded-3xl shadow-2xl flex items-center justify-center border border-rgss-light/35 shadow-rgss-primary/10 overflow-hidden"
+          className="relative w-80 h-28 flex items-center justify-center"
         >
-          {/* Background subtle glow behind the logo */}
-          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-rgss-primary/10 to-rgss-light/10 opacity-30 blur-sm -z-10 animate-pulse" />
-          
           <Image
             src="/logo.png"
             alt="RGSS Logo"
             fill
             sizes="320px"
-            className="object-contain p-3 relative z-10"
+            className="object-contain scale-[2.5]"
             priority
           />
         </motion.div>
